@@ -1,0 +1,148 @@
+### Movie Recommendation API - Sample HTTP Requests (.http)
+
+#### 1. User Registration
+
+```
+POST http://localhost:8000/api/user_register/
+Content-Type: multipart/form-data
+
+username=yourusername&password=yourpassword&first_name=Gopika&last_name=Das&email=gopika@example.com&bio=I love movies&age=22
+```
+
+#### 2. Login
+
+```
+POST http://localhost:8000/api/login/
+Content-Type: application/json
+
+{
+    "username": "yourusername",
+    "password": "yourpassword"
+}
+```
+
+#### 3. Get Profile
+
+```
+GET http://localhost:8000/api/profile/
+Authorization: Bearer <access_token>
+```
+
+#### 4. Search Movies
+
+```
+GET http://localhost:8000/api/search/?q=inception
+Authorization: Bearer <access_token>
+```
+
+#### 5. List All Movies
+
+```
+GET http://localhost:8000/api/movies/
+Authorization: Bearer <access_token>
+```
+
+#### 6. Get Single Movie
+
+```
+GET http://localhost:8000/api/single/1
+Authorization: Bearer <access_token>
+```
+
+#### 7. Add Movie (Admin Only)
+
+```
+POST http://localhost:8000/api/add_movie/
+Authorization: Bearer <admin_access_token>
+Content-Type: application/json
+
+{
+    "movie_title": "Inception",
+    "description": "A thief steals corporate secrets using dream-sharing technology.",
+    "genres_id": [1, 2],
+    "director": "Christopher Nolan",
+    "released_at": "2010-07-16",
+    "duration": 148,
+    "poster_url": "https://example.com/poster.jpg",
+    "trailer_url": "https://youtube.com/watch?v=YoHD9XEInc0",
+    "rating": 4.8
+}
+```
+
+#### 8. Update Movie (Admin Only)
+
+```
+PUT http://localhost:8000/api/update/1
+Authorization: Bearer <admin_access_token>
+Content-Type: application/json
+
+{
+    "rating": 4.9
+}
+```
+
+#### 9. Delete Movie (Admin Only)
+
+```
+DELETE http://localhost:8000/api/delete/1
+Authorization: Bearer <admin_access_token>
+```
+
+#### 10. Add Review
+
+```
+POST http://localhost:8000/api/add_review/1
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+    "title": "Amazing Movie",
+    "comment": "Really enjoyed the plot and acting!",
+    "rating": 5
+}
+```
+
+#### 11. Update Review
+
+```
+PUT http://localhost:8000/api/update_review/1
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+    "rating": 4.5
+}
+```
+
+#### 12. Delete Review
+
+```
+DELETE http://localhost:8000/api/delete_review/1
+Authorization: Bearer <access_token>
+```
+
+#### 13. List Reviews for a Movie
+
+```
+GET http://localhost:8000/api/list_movie_review/1
+Authorization: Bearer <access_token>
+```
+
+#### 14. Mark Movie as Watched
+
+```
+POST http://localhost:8000/api/watchedmovies/
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+    "movie_id": 1
+}
+```
+
+#### 15. Get Recommended Movies
+
+```
+GET http://localhost:8000/api/movies/recommended/
+Authorization: Bearer <access_token>
+```
